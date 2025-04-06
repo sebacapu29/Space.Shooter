@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    [SerializeField]   
-    GameObject enemyPrefab;
+    [SerializeField]   GameObject enemyPrefab;
+    [SerializeField]   GameObject enemyExplosion;
     private float minSpawnTime = 1f;  
-    private float maxSpawnTime = 3f;  
+    private float maxSpawnTime = 2f;  
 
     void Start()
     {

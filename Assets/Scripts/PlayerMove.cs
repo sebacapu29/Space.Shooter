@@ -6,13 +6,11 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] float speed = 0;
     [SerializeField] SpriteRenderer playerSprite;
     [SerializeField] GameObject player;
-    [SerializeField] GameManager playerExplosion;
     
     private Vector3 spriteBounds;
     private Vector3 screenBounds;
     private Vector3 playerPos;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerSprite = player.GetComponent<SpriteRenderer>();
@@ -22,13 +20,17 @@ public class PlayerMove : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         playerPos.x = Input.GetAxis("Horizontal");
         playerPos.y = Input.GetAxis("Vertical");
 
-        playerPos = playerPos.normalized;   
+        playerPos = playerPos.normalized; 
+
+        StayOnScreen();
+    }
+
+    void StayOnScreen(){
         var safePosition = transform.position;
 
         transform.position += new Vector3(playerPos.x, playerPos.y ,0) * speed * Time.deltaTime;
@@ -41,6 +43,5 @@ public class PlayerMove : MonoBehaviour
                                     transform.position.y > (screenBounds.y - spriteBounds.y)){
            transform.position = new Vector3(safePosition.x, safePosition.y, 0);
         }
-
     }
 }

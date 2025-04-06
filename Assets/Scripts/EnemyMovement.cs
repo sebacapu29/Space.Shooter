@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public float speed = 3f;
+    public float speed = 5f;
 
     void Start()
     {

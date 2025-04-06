@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 3471522842051891597}
   - component: {fileID: 7092915327004119914}
   - component: {fileID: 2516359423128727161}
+  - component: {fileID: 264887441623986529}
   - component: {fileID: 7363702952492453502}
   - component: {fileID: 1604108198086076699}
-  - component: {fileID: 264887441623986529}
   m_Layer: 0
   m_Name: LaserBlue
-  m_TagString: Untagged
+  m_TagString: LaserBlue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,6 +105,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidadY: 5
   speed: 5
+--- !u!114 &264887441623986529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4463949120426283836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cca4397125e91d9458adab1560d26077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionSprite: {fileID: 2768992596504944150, guid: 4ba45e5f7ab3e08439e75d1a1302ff20, type: 3}
 --- !u!50 &7363702952492453502
 Rigidbody2D:
   serializedVersion: 5
@@ -169,15 +182,3 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.13, y: 0.37}
   m_Direction: 0
---- !u!114 &264887441623986529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4463949120426283836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cca4397125e91d9458adab1560d26077, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
