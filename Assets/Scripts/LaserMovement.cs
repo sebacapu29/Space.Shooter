@@ -4,15 +4,16 @@ public class LaserMovement : MonoBehaviour
 {
     [SerializeField]
     private int velocidadY;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private Rigidbody2D rb;
+    public float speed = 15f;
+
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-         transform.Translate(0, velocidadY * Time.deltaTime, 0);
+        rb.MovePosition(rb.position + Vector2.up * speed * Time.fixedDeltaTime);
     }
 }

@@ -14,7 +14,7 @@ public class PlayerShoot : MonoBehaviour
     void Update()
     {
           if(Input.GetMouseButtonDown(0)){
-            Instantiate(laser, transform.position + new Vector3(0,0.5f,0), transform.rotation);
+            Instantiate(laser, transform.position + new Vector3(0,0.8f,0), transform.rotation);
             // disparo.Play();
             // bool choco = Physics.Raycast(transform.position, transform.forward);
             // if (choco)

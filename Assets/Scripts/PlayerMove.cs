@@ -3,12 +3,10 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
 
-    [SerializeField]
-    private float speed = 0;
-    [SerializeField]
-    private SpriteRenderer playerSprite;
-    [SerializeField]
-    private PlayerMove player;
+    [SerializeField] float speed = 0;
+    [SerializeField] SpriteRenderer playerSprite;
+    [SerializeField] GameObject player;
+    [SerializeField] GameManager playerExplosion;
     
     private Vector3 spriteBounds;
     private Vector3 screenBounds;
@@ -31,7 +29,18 @@ public class PlayerMove : MonoBehaviour
         playerPos.y = Input.GetAxis("Vertical");
 
         playerPos = playerPos.normalized;   
+        var safePosition = transform.position;
 
-        transform.Translate(playerPos.x * speed * Time.deltaTime, playerPos.y * speed * Time.deltaTime,0);
+        transform.position += new Vector3(playerPos.x, playerPos.y ,0) * speed * Time.deltaTime;
+
+        if(transform.position.x < (- screenBounds.x + spriteBounds.x) || 
+                                    transform.position.x > (screenBounds.x - spriteBounds.x)){
+           transform.position = new Vector3(safePosition.x, safePosition.y,0);
+        }
+           if(transform.position.y < (- screenBounds.y + spriteBounds.y) || 
+                                    transform.position.y > (screenBounds.y - spriteBounds.y)){
+           transform.position = new Vector3(safePosition.x, safePosition.y, 0);
+        }
+
     }
 }
