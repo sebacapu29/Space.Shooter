@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cca4397125e91d9458adab1560d26077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionSprite: {fileID: 2768992596504944150, guid: 4ba45e5f7ab3e08439e75d1a1302ff20, type: 3}
+  explosionSprite: {fileID: 8443315704496310910, guid: 6ef35fa36e3a65043b2d800600204bdd, type: 3}
 --- !u!50 &7363702952492453502
 Rigidbody2D:
   serializedVersion: 5

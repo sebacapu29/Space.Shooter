@@ -1,72 +1,59 @@
-using System;
-using System.Collections;
 using UnityEngine;
 
 public class GetDamaged : MonoBehaviour
 {
-    public Sprite explosionSprite;
-    private Sprite originalSprite;
+    public GameObject explosionSprite;
+    private SpriteRenderer originalSprite;
 
-    private SpriteRenderer spriteRenderer;
-    private Collider2D col;
     private bool isDestroyed = false;
-
+    private float targetTime = 1.0f;
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        col = GetComponent<Collider2D>();
-        originalSprite = spriteRenderer.sprite;
+        originalSprite = GetComponent<SpriteRenderer>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
-    {
+    {        
         if (isDestroyed) return;
 
-        if (other.CompareTag("Player") || other.CompareTag("Enemy") ) {  
-            StartCoroutine(ExplodeAndDestroy(0.1f));
+        if(other.CompareTag("DestroyObjects"))
+        {
+            isDestroyed = true;
+        }
+        if (other.CompareTag("Player") || other.CompareTag("Enemy") ) {
+            Explode();  
+            isDestroyed=true;
         }
         if(other.CompareTag("LaserBlue")){
-            StartCoroutine(ExplodeAndDestroy(0.8f));
-        }
-        if(other.CompareTag("Player")){
-            GameManager.instance.endGame = true;
+            Explode();
+            isDestroyed=true;
         }
     }
 
-    private IEnumerator ExplodeAndDestroy(float fadeDuration)
+    void EndGame(){
+        if (GameManager.instance != null)
+        {
+            GameManager.instance.endGame = true;
+        }
+        else
+        {
+            Debug.LogWarning("GameManager no está disponible.");
+        }
+    }
+    void Update()
     {
-        isDestroyed = true;
+        targetTime -= Time.deltaTime;
 
-        if (explosionSprite != null)
+        if (targetTime <= 0.0f && isDestroyed)
         {
-            spriteRenderer.sprite = explosionSprite;
+            EndGame();
+            Destroy(gameObject);
+            isDestroyed=false;
         }
-
-        if (col != null)
-            col.enabled = false;
-
-        var rb = GetComponent<Rigidbody2D>();
-        if (rb != null)
-        {
-            rb.linearVelocity = Vector2.zero;
-            rb.useFullKinematicContacts = true;
-        }
-        float timer = 0f;
-
-        Color originalColor = spriteRenderer.color;
-
-        while (timer < fadeDuration)
-        {
-            float alpha = Mathf.Lerp(1f, 0f, timer / fadeDuration);
-            spriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
-            timer += Time.deltaTime;
-            yield return null;
-        }
-
-        // Asegurarse de que termine completamente transparente
-        spriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
-        // yield return new WaitForSeconds(0.8f);
-
-        Destroy(gameObject);
+    }
+    private void Explode()
+    {
+        originalSprite.enabled = false;
+        Instantiate(explosionSprite, transform.position, transform.rotation);
     }
 }
