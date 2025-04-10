@@ -4,58 +4,50 @@ public class GetDamaged : MonoBehaviour
 {
     public GameObject explosionSprite;
     private SpriteRenderer originalSprite;
-    private bool isDestroyed = false;
-    private float targetTime = 1.0f;
-    private bool isVulnerable = false;
+    private bool isPlayerDestroyed = false;
+    private float respownTime = 3.0f;
+    private Collider2D playerCollider;
     void Start()
     {
         originalSprite = GetComponent<SpriteRenderer>();
+         playerCollider = GetComponent<Collider2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {        
       
-        if (!other.CompareTag("Player") && isDestroyed) return;
-
-        if(other.CompareTag("DestroyObjects"))
-        {
-            isDestroyed = true;
-        }
-        if (other.CompareTag("Player") && !isVulnerable) {
-            Debug.Log("Player Health  "+ PlayerStats.instance.GetHealth());
-            if(PlayerStats.instance.GetHealth() == 0 ){
-                // AnimateExplode(other.tag);          
+        // if (isDestroyed) return;
+        
+        if (gameObject.CompareTag("Player")){
+            isPlayerDestroyed=true;
+            AnimateExplode(); 
+            if(GameManager.instance.kills <= 0){
+                EndGame();
             }
             else{
-                // isHurted = true;
-                isVulnerable = true;
-                int newHealth = PlayerStats.instance.GetHealth() - 1;
-                PlayerStats.instance.SetHealth(newHealth);
+                GameManager.instance.kills--;
             }
         }
-        else if(other.CompareTag("LaserBlue")){
-            AnimateExplode();
-        }
-        else if(other.CompareTag("Enemy")){
-            AnimateExplode();
+        else if (gameObject.name != "Player"){
+            // isDestroyed = true;
+            AnimateExplode();  
+            Destroy(gameObject); 
         }
     }
     void Update()
     {
-        if (isDestroyed && !gameObject.tag.Equals("Player"))
+        if (isPlayerDestroyed)
         {
-
-            Destroy(gameObject);
+            respownTime -= Time.deltaTime;
+            if( respownTime <= 0 ){
+                respownTime=3.0f;
+                isPlayerDestroyed=false;
+                RespawnPlayer();
+            }  
         }
-        else if (isDestroyed && gameObject.tag.Equals("Player")){
-            EndGame();
-        }
-        if(isVulnerable){
-            targetTime -= Time.deltaTime;
-            if( targetTime <= 0 ){
-                isVulnerable = false;
-            }
-        }
+     }
+     void RespawnPlayer(){
+        originalSprite.enabled = true;
      }
     void EndGame()
     {
@@ -63,7 +55,7 @@ public class GetDamaged : MonoBehaviour
     }
     private void AnimateExplode()
     {
-        isDestroyed=true;
+        // isDestroyed=true;
         originalSprite.enabled = false;
         Instantiate(explosionSprite, transform.position, transform.rotation);
     }
