@@ -17,11 +17,12 @@ public class PlayerMove : MonoBehaviour
         spriteBounds = playerSprite.bounds.extents / 2;
 
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
-
     }
 
     void Update()
     {
+        if(GameManager.instance.isPlayerDestroyed) return;
+
         playerPos.x = Input.GetAxis("Horizontal");
         playerPos.y = Input.GetAxis("Vertical");
 

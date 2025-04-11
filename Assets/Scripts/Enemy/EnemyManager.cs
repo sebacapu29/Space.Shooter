@@ -5,20 +5,33 @@ public class EnemyManager : MonoBehaviour
 {
     [SerializeField]   GameObject enemyPrefab;
     private float minSpawnTime = 1f;  
-    private float maxSpawnTime = 2f;  
-
+    private float maxSpawnTime = 3f;  
+    private float randomTime;
+    private float timeDificult = (float)LevelDificulties.Easy;
+    private enum LevelDificulties{
+        Hard = 20,
+        Moderate = 30,
+        Easy = 60
+    }
     void Start()
     {
-         StartCoroutine(nameof(SpawnEnemies));
+        randomTime = Random.Range(minSpawnTime, maxSpawnTime);
     }
 
-    private IEnumerator SpawnEnemies()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
-            SpawnEnemy();
+    void Update(){
+        Debug.Log("timedifi   "+ timeDificult);
+        timeDificult-= Time.deltaTime;
+        if(timeDificult < (float)LevelDificulties.Moderate){
+            maxSpawnTime=1f;
         }
+        if(timeDificult < (float)LevelDificulties.Hard){
+            maxSpawnTime=0.2f;
+        }
+         randomTime -= Time.deltaTime;
+            if( randomTime <= 0 ){
+                randomTime = Random.Range(minSpawnTime, maxSpawnTime);;
+                SpawnEnemy();
+            } 
     }
     private void SpawnEnemy()
     {
@@ -28,11 +41,11 @@ public class EnemyManager : MonoBehaviour
                     Random.Range(-1.8f, 1.8f),
                     Random.Range(5.5f, 6f)
                 );
-                var enemyObj = Instantiate(enemyPrefab, spawnPosition, transform.rotation);
+                Instantiate(enemyPrefab, spawnPosition, transform.rotation);
         }
         else
         {
-                Debug.LogWarning("Enemy prefab no asignado en el EnemyManager.");
+            Debug.LogWarning("Enemy prefab no asignado en el EnemyManager.");
         }
     }
 }

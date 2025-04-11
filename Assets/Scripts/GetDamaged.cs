@@ -4,28 +4,27 @@ public class GetDamaged : MonoBehaviour
 {
     public GameObject explosionSprite;
     private SpriteRenderer originalSprite;
-    private bool isPlayerDestroyed = false;
-    private float respownTime = 3.0f;
-    private Collider2D playerCollider;
+    private float respownTime = 2.5f;
+
     void Start()
     {
         originalSprite = GetComponent<SpriteRenderer>();
-         playerCollider = GetComponent<Collider2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {        
       
-        // if (isDestroyed) return;
-        
-        if (gameObject.CompareTag("Player")){
-            isPlayerDestroyed=true;
+        if (GameManager.instance.isPlayerDestroyed && gameObject.CompareTag("Player")) return;    
+        if (GameManager.instance.isPlayerDestroyed && other.CompareTag("Player")) return;   
+
+        if (!GameManager.instance.isPlayerDestroyed && gameObject.CompareTag("Player")){
+            GameManager.instance.isPlayerDestroyed = true;
             AnimateExplode(); 
-            if(GameManager.instance.kills <= 0){
+            if(GameManager.instance.deaths <= 0){
                 EndGame();
             }
             else{
-                GameManager.instance.kills--;
+                GameManager.instance.deaths--;
             }
         }
         else if (gameObject.name != "Player"){
@@ -36,12 +35,12 @@ public class GetDamaged : MonoBehaviour
     }
     void Update()
     {
-        if (isPlayerDestroyed)
+        if (GameManager.instance.isPlayerDestroyed)
         {
             respownTime -= Time.deltaTime;
             if( respownTime <= 0 ){
-                respownTime=3.0f;
-                isPlayerDestroyed=false;
+                respownTime=6.0f;
+                GameManager.instance.isPlayerDestroyed=false;
                 RespawnPlayer();
             }  
         }
@@ -55,7 +54,6 @@ public class GetDamaged : MonoBehaviour
     }
     private void AnimateExplode()
     {
-        // isDestroyed=true;
         originalSprite.enabled = false;
         Instantiate(explosionSprite, transform.position, transform.rotation);
     }

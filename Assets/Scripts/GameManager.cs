@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,9 +5,10 @@ public class GameManager : MonoBehaviour
 {
     public bool endGame = false;
     public static GameManager instance = null;
-    public TextMeshProUGUI healthUI;
-    public int kills =3;
 
+    public int deaths = 3;
+    public bool isPlayerDestroyed = false;
+    
     void Awake()
     {
        if(instance == null){
@@ -22,13 +22,9 @@ public class GameManager : MonoBehaviour
     void Update(){
         if (endGame){
             SceneManager.LoadScene("MainMenu");
-        }
-        UpdateHealthUI();
+            deaths=3;
+            endGame=false;
+      }        
     }
-    void UpdateHealthUI(){
-        healthUI.text = kills.ToString();
-    }
-    void RespawnPlayer(){
-
-    }
+ 
 }
