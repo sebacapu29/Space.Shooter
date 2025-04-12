@@ -4,7 +4,7 @@ public class GetDamaged : MonoBehaviour
 {
     public GameObject explosionSprite;
     private SpriteRenderer originalSprite;
-    private float respownTime = 2.5f;
+    private float respownTime = 2f;
 
     void Start()
     {
@@ -28,7 +28,6 @@ public class GetDamaged : MonoBehaviour
             }
         }
         else if (gameObject.name != "Player"){
-            // isDestroyed = true;
             AnimateExplode();  
             Destroy(gameObject); 
         }
@@ -39,7 +38,7 @@ public class GetDamaged : MonoBehaviour
         {
             respownTime -= Time.deltaTime;
             if( respownTime <= 0 ){
-                respownTime=6.0f;
+                respownTime=2.0f;
                 GameManager.instance.isPlayerDestroyed=false;
                 RespawnPlayer();
             }  

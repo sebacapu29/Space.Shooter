@@ -24,7 +24,7 @@ public class UIManager : MonoBehaviour
             Debug.Log("fail");
         }
 
-        btnPlay.onClick.AddListener(()=> SceneManager.LoadScene("SampleScene"));
+        btnPlay.onClick.AddListener(()=> SceneManager.LoadScene("GameScene"));
     }
     
 }
