@@ -14,7 +14,7 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         playerSprite = player.GetComponent<SpriteRenderer>();
-        spriteBounds = playerSprite.bounds.extents / 2;
+        spriteBounds = playerSprite.bounds.extents;
 
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
     }

@@ -6,7 +6,7 @@ public class UIGame : MonoBehaviour
 {
     private TextMeshProUGUI txtHealth;
     private TextMeshProUGUI txtGame;
-     private float gameOverSecondsDisplayed = 3f;
+
     void Start()
     {
         var childrens = gameObject.GetComponentsInChildren<TextMeshProUGUI>();
@@ -22,10 +22,11 @@ public class UIGame : MonoBehaviour
             txtGame.text ="Game Over";
         }
         else{
-            txtHealth.text = "";
+            txtGame.text = "";
         }  
     }
     void UpdateHealthUI(){
+
         if(txtHealth != null)
         {
             txtHealth.text = GameManager.instance.deaths.ToString();
