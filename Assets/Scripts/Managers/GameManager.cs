@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 
     public int deaths = 3;
     public bool isPlayerDestroyed = false;
-    
+    private float gameOverSecondsDisplayed = 3f;
     void Awake()
     {
        if(instance == null){
@@ -21,9 +21,13 @@ public class GameManager : MonoBehaviour
     }
     void Update(){
         if (endGame){
-            SceneManager.LoadScene("MainMenu");
-            deaths=3;
-            endGame=false;
+            gameOverSecondsDisplayed -= Time.deltaTime;
+            if( gameOverSecondsDisplayed <= 0 ){
+                gameOverSecondsDisplayed = 3.0f;
+                SceneManager.LoadScene("MainMenu");
+                deaths=3;
+                endGame=false;    
+            }  
       }        
     }
  

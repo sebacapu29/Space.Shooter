@@ -19,7 +19,6 @@ public class EnemyManager : MonoBehaviour
     }
 
     void Update(){
-        Debug.Log("timedifi   "+ timeDificult);
         timeDificult-= Time.deltaTime;
         if(timeDificult < (float)LevelDificulties.Moderate){
             maxSpawnTime=1f;
