@@ -3,9 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public bool endGame = false;
     public static GameManager instance = null;
-
+    public bool endGame = false;
+    public float gameCounter = 0f;
     public int deaths = 3;
     public bool isPlayerDestroyed = false;
     private float gameOverSecondsDisplayed = 3f;
@@ -20,6 +20,10 @@ public class GameManager : MonoBehaviour
          }
     }
     void Update(){
+        if(!endGame)
+        {
+            gameCounter += Time.deltaTime;
+        }         
         if (endGame){
             gameOverSecondsDisplayed -= Time.deltaTime;
             if( gameOverSecondsDisplayed <= 0 ){
