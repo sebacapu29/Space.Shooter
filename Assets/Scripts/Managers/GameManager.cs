@@ -28,9 +28,10 @@ public class GameManager : MonoBehaviour
             gameOverSecondsDisplayed -= Time.deltaTime;
             if( gameOverSecondsDisplayed <= 0 ){
                 gameOverSecondsDisplayed = 3.0f;
-                SceneManager.LoadScene("MainMenu");
                 deaths=3;
-                endGame=false;    
+                endGame=false; 
+                gameCounter = 0f;   
+                SceneManager.LoadScene("MainMenu");
             }  
       }        
     }

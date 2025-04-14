@@ -24,7 +24,7 @@ public class EnemyManager : MonoBehaviour
             maxSpawnTime=1f;
         }
         if(timeDificult < (float)LevelDificulties.Hard){
-            maxSpawnTime=0.2f;
+            maxSpawnTime=0.1f;
         }
          randomTime -= Time.deltaTime;
             if( randomTime <= 0 ){

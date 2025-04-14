@@ -34,7 +34,7 @@ public class UIGame : MonoBehaviour
     }
     void UpdateChronometer(){
         if(txtGameChronometer != null){
-            txtGameChronometer.text = Math.Round(GameManager.instance.gameCounter,0).ToString();
+            txtGameChronometer.text = Math.Round(GameManager.instance.gameCounter,0).ToString() + "\"";
         }
     }
     void UpdateHealthUI(){
