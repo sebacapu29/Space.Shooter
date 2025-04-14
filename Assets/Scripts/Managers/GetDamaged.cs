@@ -28,8 +28,17 @@ public class GetDamaged : MonoBehaviour
             }
         }
         else if (gameObject.name != "Player"){
-            AnimateExplode();  
-            Destroy(gameObject); 
+            var enemy = gameObject.GetComponent<EnemyStats>();
+            if(enemy!=null && enemy.health > 0){
+                enemy.health--;
+                if(enemy.health <=0){
+                    AnimateExplode();  
+                    Destroy(gameObject); 
+                }
+            }else{
+                AnimateExplode();  
+                Destroy(gameObject); 
+            }
         }
     }
     void Update()
