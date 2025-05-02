@@ -1,15 +1,7 @@
 using UnityEngine;
 
-public class EnemyDamaged : MonoBehaviour
+public class EnemyDamaged : GetDamaged
 {
-    public GameObject explosionSprite;
-    private SpriteRenderer originalSprite;
-
-    void Start()
-    {
-        originalSprite = GetComponent<SpriteRenderer>();
-    }
-
      private void OnTriggerEnter2D(Collider2D other)
     {        
       
@@ -24,9 +16,8 @@ public class EnemyDamaged : MonoBehaviour
             }
         }
     }
-     private void AnimateExplode()
+    protected override void AnimateExplode()
     {
-        originalSprite.enabled = false;
-        Instantiate(explosionSprite, transform.position, transform.rotation);
+        base.AnimateExplode();
     }
 }

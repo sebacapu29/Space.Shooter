@@ -257,9 +257,57 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9166098477174300953}
     m_Modifications:
+    - target: {fileID: 2893994474827936968, guid: 865a89dad8b402945a85c5e58f4e92f8, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893994474827936968, guid: 865a89dad8b402945a85c5e58f4e92f8, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893994474827936968, guid: 865a89dad8b402945a85c5e58f4e92f8, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893994474827936968, guid: 865a89dad8b402945a85c5e58f4e92f8, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893994474827936968, guid: 865a89dad8b402945a85c5e58f4e92f8, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893994474827936968, guid: 865a89dad8b402945a85c5e58f4e92f8, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893994474827936968, guid: 865a89dad8b402945a85c5e58f4e92f8, type: 3}
+      propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4642881141098237336, guid: 865a89dad8b402945a85c5e58f4e92f8, type: 3}
+      propertyPath: m_Size.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4642881141098237336, guid: 865a89dad8b402945a85c5e58f4e92f8, type: 3}
+      propertyPath: m_Size.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4642881141098237336, guid: 865a89dad8b402945a85c5e58f4e92f8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 4642881141098237336, guid: 865a89dad8b402945a85c5e58f4e92f8, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5059364589185629393, guid: 865a89dad8b402945a85c5e58f4e92f8, type: 3}
       propertyPath: m_Name
       value: RightLaserSpawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 5059364589185629393, guid: 865a89dad8b402945a85c5e58f4e92f8, type: 3}
+      propertyPath: m_TagString
+      value: LaserBlue
       objectReference: {fileID: 0}
     - target: {fileID: 7360448038299095536, guid: 865a89dad8b402945a85c5e58f4e92f8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -326,6 +374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 146189d8c7ea83e43ab7f035f4c24ef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionSprite: {fileID: 7226583673155636401, guid: a2ab56839e1c9504ea9d141e95d0b16b, type: 3}
 --- !u!4 &7531889641564024354 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7360448038299095536, guid: 865a89dad8b402945a85c5e58f4e92f8, type: 3}
@@ -339,6 +388,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9166098477174300953}
     m_Modifications:
+    - target: {fileID: 2642183713652099513, guid: 3be00cd098e9a4a4a8ec229169d05413, type: 3}
+      propertyPath: m_Size.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2642183713652099513, guid: 3be00cd098e9a4a4a8ec229169d05413, type: 3}
+      propertyPath: m_Size.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2642183713652099513, guid: 3be00cd098e9a4a4a8ec229169d05413, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 2642183713652099513, guid: 3be00cd098e9a4a4a8ec229169d05413, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4130227248354352868, guid: 3be00cd098e9a4a4a8ec229169d05413, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.476
@@ -383,31 +448,45 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeftLaserSpawn
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4584647156501135923, guid: 3be00cd098e9a4a4a8ec229169d05413, type: 3}
+      propertyPath: m_TagString
+      value: LaserBlue
+      objectReference: {fileID: 0}
+    - target: {fileID: 8798356431213034534, guid: 3be00cd098e9a4a4a8ec229169d05413, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8798356431213034534, guid: 3be00cd098e9a4a4a8ec229169d05413, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8798356431213034534, guid: 3be00cd098e9a4a4a8ec229169d05413, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8798356431213034534, guid: 3be00cd098e9a4a4a8ec229169d05413, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8798356431213034534, guid: 3be00cd098e9a4a4a8ec229169d05413, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8798356431213034534, guid: 3be00cd098e9a4a4a8ec229169d05413, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8798356431213034534, guid: 3be00cd098e9a4a4a8ec229169d05413, type: 3}
+      propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
+      value: 0.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8798356431213034534, guid: 3be00cd098e9a4a4a8ec229169d05413, type: 3}
+    - {fileID: 5282539503701470800, guid: 3be00cd098e9a4a4a8ec229169d05413, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4584647156501135923, guid: 3be00cd098e9a4a4a8ec229169d05413, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 431208048444172209}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3be00cd098e9a4a4a8ec229169d05413, type: 3}
---- !u!1 &8230802127512976532 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4584647156501135923, guid: 3be00cd098e9a4a4a8ec229169d05413, type: 3}
-  m_PrefabInstance: {fileID: 5595263634737594023}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &431208048444172209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8230802127512976532}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 146189d8c7ea83e43ab7f035f4c24ef8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &8428448691475259459 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4130227248354352868, guid: 3be00cd098e9a4a4a8ec229169d05413, type: 3}

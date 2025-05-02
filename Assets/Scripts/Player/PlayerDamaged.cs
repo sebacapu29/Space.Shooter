@@ -1,15 +1,8 @@
 using UnityEngine;
 
-public class PlayerDamage : MonoBehaviour
+public class PlayerDamage : GetDamaged
 {
-    public GameObject explosionSprite;
-    private SpriteRenderer originalSprite;
-    private float respownTime = 2f;
-
-    void Start()
-    {
-        originalSprite = GetComponent<SpriteRenderer>();
-    }
+private float respownTime = 2f;
 
  private void OnTriggerEnter2D(Collider2D other)
     {        
@@ -27,10 +20,9 @@ public class PlayerDamage : MonoBehaviour
             }
         }
     }
-    private void AnimateExplode()
+    protected override void AnimateExplode()
     {
-        originalSprite.enabled = false;
-        Instantiate(explosionSprite, transform.position, transform.rotation);
+        base.AnimateExplode();
     }
     void EndGame()
     {
