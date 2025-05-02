@@ -237,6 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btnPlay: {fileID: 1790815214}
+  txtButtonPlay: {fileID: 0}
 --- !u!114 &341274031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,6 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btnPlay: {fileID: 0}
+  txtButtonPlay: {fileID: 0}
 --- !u!1 &421176035
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,7 +524,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 561973221755492410, guid: 99c6c9f438dc5fe40855eb7942ba6832, type: 3}
+  m_Sprite: {fileID: -2128565108189453285, guid: cc3882b5b19f5d44c9b09f7df0380ee5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -668,7 +670,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -0.000015259, y: 474.0147}
+  m_AnchoredPosition: {x: -0.000015259, y: 196}
   m_SizeDelta: {x: 294.9443, y: 47.50244}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1790815214
